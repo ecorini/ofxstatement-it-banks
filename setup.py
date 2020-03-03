@@ -4,7 +4,7 @@
 from setuptools import find_packages
 from distutils.core import setup
 
-version = "0.0.1"
+version = "0.0.2"
 
 with open('README.rst') as f:
     long_description = f.read()
@@ -16,7 +16,7 @@ setup(name='ofxstatement-it-banks',
       description=("ofxstatement plugins for some italian banks"),
       long_description=long_description,
       license="GPLv3",
-      keywords=["ofx", "banking", "statement"],
+      keywords=["ofx", "banking", "statement", "widiba", "webank", "fineco"],
       classifiers=[
           'Development Status :: 3 - Alpha',
           'Programming Language :: Python :: 3',
@@ -32,10 +32,11 @@ setup(name='ofxstatement-it-banks',
       entry_points={
           'ofxstatement':
           [
+              'fineco = ofxstatement.plugins.fineco:FinecoPlugin',
               'widiba = ofxstatement.plugins.widiba:WidibaPlugin',
               'webank = ofxstatement.plugins.webank:WebankPlugin',]
           },
-      install_requires=['ofxstatement', 'xlrd', 'datetime', 'pandas', 'lxml'],
+      install_requires=['ofxstatement', 'xlrd', 'datetime', 'pandas', 'lxml', 'mechanize', 'passpy'],
       include_package_data=True,
       zip_safe=True
       )
